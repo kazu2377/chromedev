@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ゼロから始めるAIアプリ・動画・マーケティング科</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                light: "#E5F1FF",
+                DEFAULT: "#2563eb",
+                dark: "#1d4ed8",
+              },
+              accent: "#f97316",
+            },
+            fontFamily: {
+              heading: ["'Noto Sans JP'", "sans-serif"],
+              body: ["'Inter'", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 10px 40px rgba(37,99,235,0.2)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .animate-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .animate-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hero-bg {
+        background: radial-gradient(circle at 20% 20%, rgba(37,99,235,0.25), transparent 55%),
+          radial-gradient(circle at 80% 0%, rgba(249,115,22,0.2), transparent 45%),
+          linear-gradient(135deg, #0f172a 0%, #111827 100%);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 font-body">
+    <!-- Navigation -->
+    <header class="fixed inset-x-0 top-0 z-30 bg-white/80 backdrop-blur border-b border-slate-200">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#top" class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white font-semibold">AI</span>
+          <span class="font-heading text-lg font-semibold">ゼロから始めるAIアプリ・動画・マーケティング科</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-medium md:flex">
+          <a href="#features" class="hover:text-brand transition-colors">魅力</a>
+          <a href="#curriculum" class="hover:text-brand transition-colors">カリキュラム</a>
+          <a href="#voices" class="hover:text-brand transition-colors">受講生の声</a>
+          <a href="#career" class="hover:text-brand transition-colors">就職支援</a>
+          <a href="#contact" class="rounded-full bg-brand px-4 py-2 text-white shadow-sm transition hover:bg-brand-dark">無料相談</a>
+        </nav>
+        <button
+          class="inline-flex items-center justify-center rounded-md border border-slate-200 p-2 text-slate-600 md:hidden"
+          id="nav-toggle"
+          aria-label="メニューを開く"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div class="md:hidden">
+        <nav id="mobile-nav" class="hidden flex-col gap-4 px-6 pb-6 text-sm font-medium">
+          <a href="#features" class="py-2 text-slate-700">魅力</a>
+          <a href="#curriculum" class="py-2 text-slate-700">カリキュラム</a>
+          <a href="#voices" class="py-2 text-slate-700">受講生の声</a>
+          <a href="#career" class="py-2 text-slate-700">就職支援</a>
+          <a href="#contact" class="rounded-full bg-brand px-4 py-2 text-center text-white">無料相談</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="pt-24 md:pt-28">
+      <!-- Hero -->
+      <section class="hero-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-brand/20"></div>
+        <div class="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-24 text-white md:flex-row md:items-center">
+          <div class="animate-section flex-1">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              未経験から最短でAI × 動画 × マーケティングの即戦力へ
+            </span>
+            <h1 class="mt-6 font-heading text-3xl font-semibold leading-tight md:text-5xl">
+              プログラミングとマーケティングを同時に学ぶ<br />
+              <span class="bg-gradient-to-r from-brand via-accent to-brand bg-clip-text text-transparent">ハイブリッドスクール</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-lg text-slate-100">
+              AIアプリ開発、動画制作、グロースマーケティングまでワンストップで習得。実案件シミュレーションとキャリア伴走支援で、販売できるWebサービスを生み出せる人材を育成します。
+            </p>
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-base font-semibold text-white transition hover:bg-accent/90"
+              >
+                まずは無料オンライン相談へ
+              </a>
+              <a
+                href="#curriculum"
+                class="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+              >
+                カリキュラムを見る
+              </a>
+            </div>
+            <div class="mt-10 grid gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl bg-white/10 p-4 shadow-lg backdrop-blur">
+                <p class="text-sm text-white/80">就職・転職成功率</p>
+                <p class="mt-2 text-3xl font-bold">98%</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 shadow-lg backdrop-blur">
+                <p class="text-sm text-white/80">平均内定獲得期間</p>
+                <p class="mt-2 text-3xl font-bold">3.5ヶ月</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 shadow-lg backdrop-blur">
+                <p class="text-sm text-white/80">卒業後案件受注率</p>
+                <p class="mt-2 text-3xl font-bold">92%</p>
+              </div>
+            </div>
+          </div>
+          <div class="animate-section flex-1 md:translate-y-8">
+            <div class="relative rounded-3xl bg-white/10 p-6 shadow-glow backdrop-blur">
+              <div class="absolute inset-x-0 -top-4 mx-auto h-12 w-40 rounded-full bg-white/20 blur-xl"></div>
+              <div class="relative grid gap-4">
+                <div class="rounded-2xl bg-white/90 p-4 text-slate-900 shadow">
+                  <p class="text-xs font-medium text-brand">AIアプリ開発ワークショップ</p>
+                  <p class="mt-2 text-sm">
+                    最新LLMとノーコードを掛け合わせたアプリ実装を1日で体感。講師がライブでコードレビュー。
+                  </p>
+                </div>
+                <div class="rounded-2xl bg-white/90 p-4 text-slate-900 shadow">
+                  <p class="text-xs font-medium text-brand">動画×マーケティング実践</p>
+                  <p class="mt-2 text-sm">
+                    バイラル動画の構成 → AI編集 → SNS出稿まで実践。CPA最適化の具体手法までレクチャー。
+                  </p>
+                </div>
+                <div class="flex items-center gap-4 rounded-2xl bg-slate-900/90 p-4 text-slate-100 shadow">
+                  <div>
+                    <p class="text-sm font-semibold">キャリア伴走</p>
+                    <p class="text-xs text-slate-300">
+                      元メガスタートアップのPdM・CMOが1on1で面談メンター。
+                    </p>
+                  </div>
+                  <span class="rounded-full bg-brand px-4 py-2 text-xs font-semibold">毎週開催</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="mx-auto max-w-6xl px-6 py-20">
+        <div class="animate-section text-center">
+          <span class="text-sm font-semibold uppercase tracking-widest text-brand">Features</span>
+          <h2 class="mt-4 font-heading text-3xl font-semibold md:text-4xl">AI時代に求められる「売れる」スキルを一気通貫で</h2>
+          <p class="mt-4 text-slate-600">
+            未経験者でも安心して学べるよう、プロジェクト型学習と個別補講で徹底サポート。AIとマーケティングを活用し、結果に直結する力を育てます。
+          </p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <div class="animate-section rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/60">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M12 6v6l4 2m4 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-slate-900">最短で実践投入できるAIアプリ開発</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">
+              LLM、生成AI API、ノーコード連携を組み合わせた案件をベースに学習。実務を想定したチーム開発で手を動かし続けます。
+            </p>
+          </div>
+          <div class="animate-section rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/60">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M9.75 17L15 12 9.75 7m7.5 10A2.25 2.25 0 0021 14.75v-5.5A2.25 2.25 0 0017.25 7h-10.5A2.25 2.25 0 004.5 9.25v5.5A2.25 2.25 0 006.75 17h10.5z"
+                />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-slate-900">動画制作×グロースマーケティング</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">
+              AI動画編集ツール、広告運用、SNS分析をパッケージで学習。実データを使った施策設計＆改善サイクルを反復します。
+            </p>
+          </div>
+          <div class="animate-section rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/60">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M12 8c-2.21 0-4 1.79-4 4 0 1.65 1.35 3 3 3h2a3 3 0 100-6m0 9v1m-6-1v1m12-1v1M5 21h14a2 2 0 002-2v-4.5A4.5 4.5 0 0016.5 10H7.5A4.5 4.5 0 003 14.5V19a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-semibold text-slate-900">キャリア支援＆販売導線設計</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">
+              キャリア戦略ワーク、面接対策、営業資料添削、ポートフォリオ改善まで伴走。卒業後の案件獲得や副業支援も実施します。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Curriculum -->
+      <section id="curriculum" class="bg-white py-20">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="animate-section text-center">
+            <span class="text-sm font-semibold uppercase tracking-widest text-brand">Curriculum</span>
+            <h2 class="mt-4 font-heading text-3xl font-semibold md:text-4xl">4ヶ月で「売れるサービス」を形にするロードマップ</h2>
+          </div>
+          <div class="mt-12 grid gap-10 md:grid-cols-2">
+            <div class="animate-section rounded-3xl border border-slate-200 bg-slate-50 p-8">
+              <h3 class="text-lg font-semibold text-brand">Stage 1 : Foundation（1ヶ月目）</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>・HTML/CSS、JavaScript、AI API基礎</li>
+                <li>・プロンプトエンジニアリングとワークフロー設計</li>
+                <li>・動画編集ツール（CapCut / Descript）習熟</li>
+              </ul>
+            </div>
+            <div class="animate-section rounded-3xl border border-slate-200 bg-slate-50 p-8">
+              <h3 class="text-lg font-semibold text-brand">Stage 2 : Build（2〜3ヶ月目）</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>・AIチャットアプリ×ノーコード自動化</li>
+                <li>・動画広告制作＋SNSキャンペーン設計</li>
+                <li>・実案件シミュレーション（チーム開発／週次レビュー）</li>
+              </ul>
+            </div>
+            <div class="animate-section rounded-3xl border border-slate-200 bg-slate-50 p-8">
+              <h3 class="text-lg font-semibold text-brand">Stage 3 : Growth（4ヶ月目）</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>・マーケ指標の分析、改善スプリント</li>
+                <li>・販売導線・LP構築、LPO/ABテスト実践</li>
+                <li>・キャリアコーチング、面接＆案件提案ロールプレイ</li>
+              </ul>
+            </div>
+            <div class="animate-section rounded-3xl border border-slate-200 bg-slate-50 p-8">
+              <h3 class="text-lg font-semibold text-brand">Stage 4 : Launch（卒業後サポート）</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                <li>・卒業制作デモデー＆企業マッチング会</li>
+                <li>・案件紹介／副業リード提供／コミュニティ継続支援</li>
+                <li>・マーケティングOJT（広告運用・カスタマー成功）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Slider -->
+      <section id="voices" class="mx-auto max-w-6xl px-6 py-20">
+        <div class="animate-section text-center">
+          <span class="text-sm font-semibold uppercase tracking-widest text-brand">Voices</span>
+          <h2 class="mt-4 font-heading text-3xl font-semibold md:text-4xl">受講生の声</h2>
+          <p class="mt-4 text-slate-600">実務さながらの環境で学び、短期間でキャリア転換を叶えた卒業生の体験談です。</p>
+        </div>
+        <div class="animate-section relative mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-white p-10 shadow-lg">
+          <div class="relative" id="testimonial-slider">
+            <div class="flex transition-transform duration-500 ease-out" data-track>
+              <article class="flex min-w-full flex-col gap-6 px-2">
+                <div class="flex items-center gap-4">
+                  <img src="https://placehold.co/80x80?text=Y" alt="受講生Yさん" class="h-16 w-16 rounded-full object-cover" />
+                  <div>
+                    <p class="text-lg font-semibold text-slate-900">山本 遥 さん（26歳）</p>
+                    <p class="text-sm text-slate-500">元接客業 → 広告代理店 プロダクトマーケター</p>
+                  </div>
+                </div>
+                <p class="text-sm leading-7 text-slate-700">
+                  全くの未経験でしたが、AIアプリ開発と広告運用を一気に学べる点が決め手でした。週次のマーケレビューで数字の追い方を叩き込まれ、卒業制作がそのまま内定先での実務に直結しました。
+                </p>
+                <div class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 shadow-inner">
+                  BEFORE: プログラミング経験ゼロ / AFTER: 年収120%UP・プロダクトマーケター就職
+                </div>
+              </article>
+              <article class="flex min-w-full flex-col gap-6 px-2">
+                <div class="flex items-center gap-4">
+                  <img src="https://placehold.co/80x80?text=M" alt="受講生Mさん" class="h-16 w-16 rounded-full object-cover" />
+                  <div>
+                    <p class="text-lg font-semibold text-slate-900">三浦 大輝 さん（31歳）</p>
+                    <p class="text-sm text-slate-500">元営業 → SaaSスタートアップ フロントエンドエンジニア</p>
+                  </div>
+                </div>
+                <p class="text-sm leading-7 text-slate-700">
+                  受講中から副業案件の営業をサポートいただき、卒業と同時にAIチャットボット案件を受注。マーケティング視点でLP改善も提案できる点が評価され、SaaS企業へ転職できました。
+                </p>
+                <div class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 shadow-inner">
+                  BEFORE: 法人営業 / AFTER: エンジニア転職＋副業案件 月20万円
+                </div>
+              </article>
+              <article class="flex min-w-full flex-col gap-6 px-2">
+                <div class="flex items-center gap-4">
+                  <img src="https://placehold.co/80x80?text=K" alt="受講生Kさん" class="h-16 w-16 rounded-full object-cover" />
+                  <div>
+                    <p class="text-lg font-semibold text-slate-900">加藤 愛 さん（29歳）</p>
+                    <p class="text-sm text-slate-500">元企画職 → フリーランス クリエイティブディレクター</p>
+                  </div>
+                </div>
+                <p class="text-sm leading-7 text-slate-700">
+                  マーケティングも含めて学んだことで、動画制作だけでなく施策提案まで任されるように。卒業後すぐにフリーランス独立し、AI動画×SNS運用パッケージで売上が継続的に伸びています。
+                </p>
+                <div class="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 shadow-inner">
+                  BEFORE: 企画職 / AFTER: フリーランス独立・月商80万円突破
+                </div>
+              </article>
+            </div>
+            <div class="mt-8 flex items-center justify-center gap-3">
+              <button
+                type="button"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-brand transition hover:border-brand"
+                data-prev
+                aria-label="前へ"
+              >
+                &#8592;
+              </button>
+              <div class="flex items-center gap-2" data-dots></div>
+              <button
+                type="button"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-brand transition hover:border-brand"
+                data-next
+                aria-label="次へ"
+              >
+                &#8594;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Career Support -->
+      <section id="career" class="bg-slate-900 py-20 text-white">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="animate-section text-center">
+            <span class="text-sm font-semibold uppercase tracking-widest text-accent">Career Support</span>
+            <h2 class="mt-4 font-heading text-3xl font-semibold md:text-4xl">就職・案件獲得を加速させる支援体制</h2>
+          </div>
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            <div class="animate-section rounded-3xl bg-white/5 p-8 shadow-lg shadow-black/20">
+              <h3 class="text-lg font-semibold">内定先企業の例</h3>
+              <ul class="mt-4 space-y-2 text-sm text-slate-200">
+                <li>・国内大手IT企業 プロダクトマーケティング部</li>
+                <li>・AIスタートアップ フロントエンドエンジニア</li>
+                <li>・D2Cブランド グロースチーム</li>
+                <li>・動画広告代理店 クリエイティブプランナー</li>
+              </ul>
+            </div>
+            <div class="animate-section rounded-3xl bg-white/5 p-8 shadow-lg shadow-black/20">
+              <h3 class="text-lg font-semibold">サポート内容</h3>
+              <ul class="mt-4 space-y-2 text-sm text-slate-200">
+                <li>・週次キャリアコーチングと面談対策</li>
+                <li>・履歴書・職務経歴書・ポートフォリオ徹底添削</li>
+                <li>・企業課題へのプレゼン＆フィードバック</li>
+                <li>・卒業後6ヶ月の無料案件紹介コミュニティ</li>
+              </ul>
+            </div>
+            <div class="animate-section rounded-3xl bg-white/5 p-8 shadow-lg shadow-black/20">
+              <h3 class="text-lg font-semibold">成果データ</h3>
+              <ul class="mt-4 space-y-2 text-sm text-slate-200">
+                <li>・最初の内定獲得まで平均3.5ヶ月</li>
+                <li>・卒業後1年以内の平均年収アップ率36%</li>
+                <li>・副業／フリーランス案件受注率92%</li>
+                <li>・コミュニティ継続率84%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extra Value -->
+      <section class="mx-auto max-w-6xl px-6 py-20">
+        <div class="animate-section rounded-3xl bg-white p-10 shadow-xl">
+          <div class="grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-center">
+            <div>
+              <h2 class="font-heading text-3xl font-semibold text-slate-900 md:text-4xl">
+                プログラミングだけじゃない、マーケティングでプラスアルファの価値を
+              </h2>
+              <p class="mt-6 text-base leading-7 text-slate-600">
+                技術を学ぶだけでは「売れるサービス」は作れません。本講座では、ユーザー理解、価値提案、販売導線設計、グロース施策までカリキュラム化。制作物を単なる作品で終わらせず、「成果を出すビジネス資産」に育て上げます。
+              </p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-slate-200 p-4 text-sm text-slate-600">
+                  <p class="text-sm font-semibold text-brand">AIマーケティング演習</p>
+                  ・AIでのユーザー調査<br />
+                  ・カスタマージャーニー設計<br />
+                  ・広告とCRMの自動化
+                </div>
+                <div class="rounded-2xl border border-slate-200 p-4 text-sm text-slate-600">
+                  <p class="text-sm font-semibold text-brand">販売戦略スプリント</p>
+                  ・LP / EC制作とABテスト<br />
+                  ・SNS運用 / インフルエンサー施策<br />
+                  ・収益シミュレーション＆改善
+                </div>
+              </div>
+            </div>
+            <div class="rounded-3xl bg-slate-900 p-8 text-white shadow-lg">
+              <h3 class="text-lg font-semibold">ハイブリッド講師陣</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-100">
+                <li>・AIスタートアップCTO（アプリ開発指導）</li>
+                <li>・動画広告プロデューサー（制作〜運用ノウハウ）</li>
+                <li>・元メガベンチャーCMO（グロース戦略設計）</li>
+                <li>・キャリアコンサルタント（就職 / 副業サポート）</li>
+              </ul>
+              <p class="mt-6 text-xs text-slate-300">
+                週3回のライブ授業＋オンデマンド教材＋メンター常駐のDiscordコミュニティで、いつでも質問・相談が可能です。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-brand via-brand-dark to-slate-900 py-20 text-white">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="relative mx-auto max-w-4xl px-6 text-center">
+          <h2 class="font-heading text-3xl font-semibold md:text-4xl">未来のキャリアを、今ここから描こう。</h2>
+          <p class="mt-6 text-lg text-slate-100">
+            無料カウンセリングでは、あなたのこれまでの経験・目標を伺い、最適な学習プランとキャリア戦略をご提案します。お気軽にご相談ください。
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-brand transition hover:bg-slate-100"
+            >
+              無料カウンセリングを予約
+            </a>
+            <a
+              href="#curriculum"
+              class="inline-flex items-center justify-center rounded-full border border-white/50 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+            >
+              カリキュラム資料をダウンロード
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="mx-auto max-w-5xl px-6 py-20">
+        <div class="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
+          <div class="animate-section">
+            <h2 class="font-heading text-3xl font-semibold text-slate-900 md:text-4xl">無料オンライン相談・資料請求</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-600">
+              ご希望の開始時期やキャリアゴールに合わせて、カリキュラムやスケジュールをカスタマイズできます。Zoomまたは対面での相談が可能です。
+            </p>
+            <div class="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow">
+              <h3 class="text-lg font-semibold text-slate-900">相談内容の一例</h3>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li>・未経験からのAIアプリ開発の学び方</li>
+                <li>・動画制作とマーケティングを掛け合わせたキャリア戦略</li>
+                <li>・副業／フリーランスで月10万円稼ぐための最短ルート</li>
+                <li>・学習時間の確保方法、学費サポート</li>
+              </ul>
+            </div>
+          </div>
+          <form class="animate-section rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/70">
+            <div class="grid gap-4">
+              <label class="text-sm font-medium text-slate-700">
+                お名前
+                <input type="text" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" placeholder="例）山田 太郎" />
+              </label>
+              <label class="text-sm font-medium text-slate-700">
+                メールアドレス
+                <input type="email" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" placeholder="sample@example.com" />
+              </label>
+              <label class="text-sm font-medium text-slate-700">
+                ご希望の学習スタート時期
+                <select class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30">
+                  <option>1ヶ月以内</option>
+                  <option>3ヶ月以内</option>
+                  <option>半年以内</option>
+                  <option>未定（まずは情報収集）</option>
+                </select>
+              </label>
+              <label class="text-sm font-medium text-slate-700">
+                ご相談内容
+                <textarea rows="4" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" placeholder="現状の課題や聞きたいことをお書きください"></textarea>
+              </label>
+              <button
+                type="submit"
+                class="mt-4 inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand-dark"
+              >
+                送信する
+              </button>
+              <p class="text-xs text-slate-500">
+                送信後、担当者より2営業日以内にご連絡いたします。個人情報は資料送付およびカウンセリング以外の目的では使用いたしません。
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-10 text-slate-300">
+      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-heading text-lg text-white">ゼロから始めるAIアプリ・動画・マーケティング科</p>
+          <p class="mt-2 text-sm text-slate-400">© 2025 ZeroStart Academy. All rights reserved.</p>
+        </div>
+        <div class="flex gap-6 text-sm text-slate-400">
+          <a href="#curriculum" class="hover:text-white">カリキュラム</a>
+          <a href="#career" class="hover:text-white">就職支援</a>
+          <a href="#contact" class="hover:text-white">お問い合わせ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Mobile navigation toggle
+        const navToggle = document.getElementById("nav-toggle");
+        const mobileNav = document.getElementById("mobile-nav");
+        if (navToggle && mobileNav) {
+          navToggle.addEventListener("click", () => {
+            mobileNav.classList.toggle("hidden");
+          });
+        }
+
+        // Intersection Observer for fade-ins
+        const animatedSections = document.querySelectorAll(".animate-section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        animatedSections.forEach((section) => observer.observe(section));
+
+        // Testimonial slider
+        const slider = document.getElementById("testimonial-slider");
+        if (slider) {
+          const track = slider.querySelector("[data-track]");
+          const slides = Array.from(track.children);
+          const prevBtn = slider.querySelector("[data-prev]");
+          const nextBtn = slider.querySelector("[data-next]");
+          const dotsContainer = slider.querySelector("[data-dots]");
+          let currentIndex = 0;
+          let autoPlayTimer = null;
+
+          const createDots = () => {
+            slides.forEach((_, idx) => {
+              const dot = document.createElement("button");
+              dot.className =
+                "h-2.5 w-2.5 rounded-full border border-slate-300 transition-all duration-300";
+              dot.setAttribute("aria-label", `スライド ${idx + 1}`);
+              dot.addEventListener("click", () => goToSlide(idx));
+              dotsContainer.appendChild(dot);
+            });
+          };
+
+          const updateDots = () => {
+            dotsContainer.querySelectorAll("button").forEach((dot, idx) => {
+              dot.classList.toggle("bg-brand", idx === currentIndex);
+              dot.classList.toggle("h-3.5", idx === currentIndex);
+              dot.classList.toggle("w-3.5", idx === currentIndex);
+            });
+          };
+
+          const goToSlide = (index) => {
+            currentIndex = (index + slides.length) % slides.length;
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            updateDots();
+            restartAutoPlay();
+          };
+
+          const nextSlide = () => goToSlide(currentIndex + 1);
+          const prevSlide = () => goToSlide(currentIndex - 1);
+
+          const startAutoPlay = () => {
+            autoPlayTimer = setInterval(nextSlide, 6000);
+          };
+
+          const restartAutoPlay = () => {
+            if (autoPlayTimer) clearInterval(autoPlayTimer);
+            startAutoPlay();
+          };
+
+          createDots();
+          goToSlide(0);
+          startAutoPlay();
+
+          nextBtn.addEventListener("click", nextSlide);
+          prevBtn.addEventListener("click", prevSlide);
+        }
+      });
+    </script>
+  </body>
+</html>
