@@ -47,11 +47,56 @@
       </div>
       <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
         <nav class="flex flex-col px-4 py-4 space-y-3 text-sm">
-          <a href="#vision" class="hover:text-blue-500 transition">ビジョン</a>
-          <a href="#works" class="hover:text-blue-500 transition">研修生の作品</a>
-          <a href="#voices" class="hover:text-blue-500 transition">研修生の声</a>
-          <a href="#program" class="hover:text-blue-500 transition">研修プログラム</a>
-          <a href="#entry" class="hover:text-blue-500 transition">エントリー</a>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-vision" aria-expanded="false" aria-controls="accordion-panel-vision">
+              ビジョン
+              <span class="accordion-icon text-blue-500 transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-vision" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-vision">
+              <p class="text-xs">AI ビジョンと成長戦略をチェック。</p>
+              <a href="#vision" class="inline-flex items-center gap-1 text-blue-600 font-semibold hover:text-blue-500">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-works" aria-expanded="false" aria-controls="accordion-panel-works">
+              研修生の作品
+              <span class="accordion-icon text-blue-500 transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-works" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-works">
+              <p class="text-xs">最新の制作実績スライダーを確認。</p>
+              <a href="#works" class="inline-flex items-center gap-1 text-blue-600 font-semibold hover:text-blue-500">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-voices" aria-expanded="false" aria-controls="accordion-panel-voices">
+              研修生の声
+              <span class="accordion-icon text-blue-500 transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-voices" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-voices">
+              <p class="text-xs">キャリアパスのリアルな証言を読む。</p>
+              <a href="#voices" class="inline-flex items-center gap-1 text-blue-600 font-semibold hover:text-blue-500">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-program" aria-expanded="false" aria-controls="accordion-panel-program">
+              研修プログラム
+              <span class="accordion-icon text-blue-500 transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-program" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-program">
+              <p class="text-xs">カリキュラムの流れとサポート内容。</p>
+              <a href="#program" class="inline-flex items-center gap-1 text-blue-600 font-semibold hover:text-blue-500">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-entry" aria-expanded="false" aria-controls="accordion-panel-entry">
+              エントリー
+              <span class="accordion-icon text-blue-500 transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-entry" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-entry">
+              <p class="text-xs">面談予約フォームにアクセス。</p>
+              <a href="#entry" class="inline-flex items-center gap-1 text-blue-600 font-semibold hover:text-blue-500">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -533,9 +578,54 @@
 
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
+      const accordionTriggers = Array.from(document.querySelectorAll(".accordion-trigger"));
+
+      const resetAccordions = () => {
+        accordionTriggers.forEach((trigger) => {
+          trigger.setAttribute("aria-expanded", "false");
+          const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+          panel?.classList.add("hidden");
+          const icon = trigger.querySelector(".accordion-icon");
+          icon?.classList.add("-rotate-90");
+          icon?.classList.remove("rotate-0");
+        });
+      };
+
+      accordionTriggers.forEach((trigger) => {
+        const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+        const icon = trigger.querySelector(".accordion-icon");
+        trigger.addEventListener("click", () => {
+          const expanded = trigger.getAttribute("aria-expanded") === "true";
+          accordionTriggers.forEach((other) => {
+            if (other !== trigger) {
+              other.setAttribute("aria-expanded", "false");
+              const otherPanel = document.getElementById(other.getAttribute("aria-controls"));
+              otherPanel?.classList.add("hidden");
+              const otherIcon = other.querySelector(".accordion-icon");
+              otherIcon?.classList.add("-rotate-90");
+              otherIcon?.classList.remove("rotate-0");
+            }
+          });
+
+          trigger.setAttribute("aria-expanded", (!expanded).toString());
+          panel?.classList.toggle("hidden", expanded);
+          icon?.classList.toggle("-rotate-90", expanded);
+          icon?.classList.toggle("rotate-0", !expanded);
+        });
+      });
 
       menuToggle?.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        const isHidden = mobileMenu.classList.toggle("hidden");
+        if (isHidden) {
+          resetAccordions();
+        }
+      });
+
+      document.querySelectorAll(".accordion-panel a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          resetAccordions();
+        });
       });
     </script>
   </body>

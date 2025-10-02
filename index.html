@@ -98,15 +98,58 @@
           </svg>
         </button>
       </div>
-      <div class="md:hidden">
-        <nav id="mobile-nav" class="hidden flex-col gap-3 px-6 pb-6 text-sm font-medium">
-          <a href="#features" class="py-2 text-slate-700">選ばれる理由</a>
-          <a href="#curriculum" class="py-2 text-slate-700">学びの流れ</a>
-          <a href="#voices" class="py-2 text-slate-700">受講生の声</a>
-          <a href="#career" class="py-2 text-slate-700">就職サポート</a>
-          <a href="#contact" class="rounded-full bg-brand px-4 py-2 text-center text-white"
-            >説明会予約</a
-          >
+      <div id="mobile-nav" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <nav class="flex flex-col px-6 py-4 space-y-3 text-sm font-medium">
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-features" aria-expanded="false" aria-controls="accordion-panel-features">
+              選ばれる理由
+              <span class="accordion-icon text-brand transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-features" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-features">
+              <p class="text-xs">カリキュラムと学習サポートの強みをチェック。</p>
+              <a href="#features" class="inline-flex items-center gap-1 text-brand font-semibold hover:text-brand-dark">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-curriculum" aria-expanded="false" aria-controls="accordion-panel-curriculum">
+              学びの流れ
+              <span class="accordion-icon text-brand transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-curriculum" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-curriculum">
+              <p class="text-xs">12週の学習ステップと制作課題の概要。</p>
+              <a href="#curriculum" class="inline-flex items-center gap-1 text-brand font-semibold hover:text-brand-dark">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-voices" aria-expanded="false" aria-controls="accordion-panel-voices">
+              受講生の声
+              <span class="accordion-icon text-brand transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-voices" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-voices">
+              <p class="text-xs">卒業後のキャリアや学習体験を読む。</p>
+              <a href="#voices" class="inline-flex items-center gap-1 text-brand font-semibold hover:text-brand-dark">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-career" aria-expanded="false" aria-controls="accordion-panel-career">
+              就職サポート
+              <span class="accordion-icon text-brand transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-career" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-career">
+              <p class="text-xs">ポートフォリオ添削や求人紹介の流れ。</p>
+              <a href="#career" class="inline-flex items-center gap-1 text-brand font-semibold hover:text-brand-dark">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
+            <button type="button" class="accordion-trigger w-full flex items-center justify-between px-4 py-3 font-medium text-slate-700" id="accordion-trigger-contact" aria-expanded="false" aria-controls="accordion-panel-contact">
+              説明会予約
+              <span class="accordion-icon text-brand transform -rotate-90 transition-transform duration-200">▼</span>
+            </button>
+            <div id="accordion-panel-contact" class="accordion-panel hidden px-4 pb-4 pt-0 text-slate-600 space-y-3" role="region" aria-labelledby="accordion-trigger-contact">
+              <p class="text-xs">日程相談や質問はフォームからどうぞ。</p>
+              <a href="#contact" class="inline-flex items-center gap-1 text-brand font-semibold hover:text-brand-dark">セクションへ<span aria-hidden="true">→</span></a>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -744,9 +787,57 @@
       document.addEventListener("DOMContentLoaded", () => {
         const navToggle = document.getElementById("nav-toggle");
         const mobileNav = document.getElementById("mobile-nav");
+        const accordionTriggers = Array.from(document.querySelectorAll(".accordion-trigger"));
+
+        const resetAccordions = () => {
+          accordionTriggers.forEach((trigger) => {
+            trigger.setAttribute("aria-expanded", "false");
+            const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+            panel?.classList.add("hidden");
+            const icon = trigger.querySelector(".accordion-icon");
+            icon?.classList.add("-rotate-90");
+            icon?.classList.remove("rotate-0");
+          });
+        };
+
+        accordionTriggers.forEach((trigger) => {
+          const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+          const icon = trigger.querySelector(".accordion-icon");
+          trigger.addEventListener("click", () => {
+            const expanded = trigger.getAttribute("aria-expanded") === "true";
+            accordionTriggers.forEach((other) => {
+              if (other !== trigger) {
+                other.setAttribute("aria-expanded", "false");
+                const otherPanel = document.getElementById(other.getAttribute("aria-controls"));
+                otherPanel?.classList.add("hidden");
+                const otherIcon = other.querySelector(".accordion-icon");
+                otherIcon?.classList.add("-rotate-90");
+                otherIcon?.classList.remove("rotate-0");
+              }
+            });
+
+            trigger.setAttribute("aria-expanded", (!expanded).toString());
+            panel?.classList.toggle("hidden", expanded);
+            icon?.classList.toggle("-rotate-90", expanded);
+            icon?.classList.toggle("rotate-0", !expanded);
+          });
+        });
+
         if (navToggle && mobileNav) {
           navToggle.addEventListener("click", () => {
-            mobileNav.classList.toggle("hidden");
+            const isHidden = mobileNav.classList.toggle("hidden");
+            if (isHidden) {
+              resetAccordions();
+            }
+          });
+        }
+
+        if (mobileNav) {
+          document.querySelectorAll(".accordion-panel a").forEach((link) => {
+            link.addEventListener("click", () => {
+              mobileNav.classList.add("hidden");
+              resetAccordions();
+            });
           });
         }
 
