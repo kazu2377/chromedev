@@ -1,0 +1,32 @@
+# Node / dev
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Build / output
+dist/
+build/
+.cache/
+
+# Tailwind: 出力 CSS をリポジトリに含めない場合は有効化
+# output.css
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~ 
+*.bak
+
+# Logs
+*.log
+
+# Large media: ローカルで保持する場合は Git LFS の利用を検討
+# *.mp4

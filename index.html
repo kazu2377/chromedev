@@ -8,7 +8,6 @@
       name="description"
       content="AIアプリ開発・動画制作・マーケティングを未経験から学べる『ゼロから始めるAIアプリ・動画・マーケティング科』の公式案内ページです。カリキュラム、受講生の声、就職サポートをご紹介します。"
     />
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
     <link
       rel="preload"
       href="20251001_1426_New Video_simple_compose_01k6f3qwfwfk4sqems5qyj4v0z.mp4"
@@ -17,9 +16,12 @@
       fetchpriority="high"
     />
 
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- <script src="https://cdn.tailwindcss.com" defer></script> -->
+    <link href="output.css" rel="stylesheet" />
+
     <script>
-      tailwind.config = {
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
         theme: {
           extend: {
             colors: {
@@ -66,7 +68,13 @@
   </head>
   <body
     class="min-h-screen bg-surface text-slate-900 font-body"
-    style="min-height:100vh;background-color:#f8fafc;color:#0f172a;font-family:'Inter','system-ui',sans-serif;margin:0;"
+    style="
+      min-height: 100vh;
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-family: 'Inter', 'system-ui', sans-serif;
+      margin: 0;
+    "
   >
     <!-- Navigation -->
     <header class="fixed inset-x-0 top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -127,7 +135,7 @@
       <div
         id="mobile-nav"
         class="md:hidden hidden border-t border-slate-200 bg-white"
-        style="display:none;"
+        style="display: none"
       >
         <nav class="flex flex-col px-6 py-4 space-y-3 text-sm font-medium">
           <div class="accordion-item border border-slate-200 rounded-xl overflow-hidden">
@@ -274,7 +282,7 @@
       </div>
     </header>
 
-    <main id="top" class="pt-24 md:pt-28">
+    <main id="top" class="pt-24 md:pt-28" style="padding-top: 6rem">
       <!-- Hero -->
       <section class="hero-bg">
         <div class="absolute inset-0 overflow-hidden">
@@ -509,9 +517,11 @@
                 class="w-full max-w-sm rounded-[32px] border border-white/60 bg-white/90 p-4 shadow-[0_30px_80px_-40px_rgba(37,99,235,0.35)]"
               >
                 <img
-                  src="キャプチャ.PNG"
+                  src="キャプチャ.webp"
                   alt="受講生が制作したプロジェクト管理ボード"
                   class="w-full rounded-[24px] object-cover shadow-inner"
+                  width="553"
+                  height="514"
                   loading="lazy"
                   decoding="async"
                 />
@@ -922,235 +932,186 @@
     <!-- Scripts -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const cleanupTasks = [];
-        const registerCleanup = (callback) => {
-          if (typeof callback === "function") {
-            cleanupTasks.push(callback);
+        let e = [],
+          t = (t) => {
+            "function" == typeof t && e.push(t);
+          },
+          l = document.getElementById("nav-toggle"),
+          r = document.getElementById("mobile-nav"),
+          a = Array.from(document.querySelectorAll(".accordion-trigger")),
+          i = () => {
+            a.forEach((e) => {
+              e.setAttribute("aria-expanded", "false");
+              let t = document.getElementById(e.getAttribute("aria-controls"));
+              t?.classList.add("hidden");
+              let l = e.querySelector(".accordion-icon");
+              l?.classList.add("-rotate-90"), l?.classList.remove("rotate-0");
+            });
+          };
+        a.forEach((e) => {
+          let t = document.getElementById(e.getAttribute("aria-controls")),
+            l = e.querySelector(".accordion-icon");
+          e.addEventListener("click", () => {
+            let r = "true" === e.getAttribute("aria-expanded");
+            a.forEach((t) => {
+              if (t !== e) {
+                t.setAttribute("aria-expanded", "false");
+                let l = document.getElementById(t.getAttribute("aria-controls"));
+                l?.classList.add("hidden");
+                let r = t.querySelector(".accordion-icon");
+                r?.classList.add("-rotate-90"), r?.classList.remove("rotate-0");
+              }
+            }),
+              e.setAttribute("aria-expanded", (!r).toString()),
+              t?.classList.toggle("hidden", r),
+              l?.classList.toggle("-rotate-90", r),
+              l?.classList.toggle("rotate-0", !r);
+          });
+        }),
+          l &&
+            r &&
+            l.addEventListener("click", () => {
+              let e = r.classList.toggle("hidden");
+              e && i();
+            }),
+          r &&
+            document.querySelectorAll(".accordion-panel a").forEach((e) => {
+              e.addEventListener("click", () => {
+                r.classList.add("hidden"), i();
+              });
+            });
+        let s = document.querySelectorAll(".animate-section"),
+          n = new IntersectionObserver(
+            (e) => {
+              e.forEach((e) => {
+                e.isIntersecting && (e.target.classList.add("is-visible"), n.unobserve(e.target));
+              });
+            },
+            { threshold: 0.1 }
+          );
+        s.forEach((e) => n.observe(e)), t(() => n.disconnect());
+        let c = (e) => {
+          "requestIdleCallback" in window ? requestIdleCallback(() => e()) : setTimeout(e, 120);
+        };
+        c(() => {
+          let e = document.getElementById("flow-slider");
+          if (e) {
+            let l = e.querySelector("[data-step-track]"),
+              r = Array.from(l.children),
+              a = e.querySelector("[data-step-prev]"),
+              i = e.querySelector("[data-step-next]"),
+              s = e.querySelector("[data-step-dots]"),
+              n = 0,
+              c = () => {
+                r.forEach((e, t) => {
+                  let l = document.createElement("button");
+                  (l.className =
+                    "h-2.5 w-2.5 rounded-full border border-slate-300 transition-all duration-300"),
+                    l.setAttribute("aria-label", `学習ステップ ${t + 1}`),
+                    l.addEventListener("click", () => d(t)),
+                    s.appendChild(l);
+                });
+              },
+              o = () => {
+                s.querySelectorAll("button").forEach((e, t) => {
+                  e.classList.toggle("bg-brand", t === n),
+                    e.classList.toggle("h-3.5", t === n),
+                    e.classList.toggle("w-3.5", t === n);
+                });
+              },
+              d = (e) => {
+                n = (e + r.length) % r.length;
+                let t = -(100 * n);
+                (l.style.transform = `translateX(${t}%)`), o();
+              },
+              g = () => d(n + 1),
+              u = () => d(n - 1);
+            c(),
+              d(0),
+              i.addEventListener("click", g),
+              a.addEventListener("click", u),
+              t(() => {
+                i.removeEventListener("click", g), a.removeEventListener("click", u);
+              });
           }
-        };
-
-        const navToggle = document.getElementById("nav-toggle");
-        const mobileNav = document.getElementById("mobile-nav");
-        const accordionTriggers = Array.from(document.querySelectorAll(".accordion-trigger"));
-
-        const resetAccordions = () => {
-          accordionTriggers.forEach((trigger) => {
-            trigger.setAttribute("aria-expanded", "false");
-            const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-            panel?.classList.add("hidden");
-            const icon = trigger.querySelector(".accordion-icon");
-            icon?.classList.add("-rotate-90");
-            icon?.classList.remove("rotate-0");
-          });
-        };
-
-        accordionTriggers.forEach((trigger) => {
-          const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-          const icon = trigger.querySelector(".accordion-icon");
-          trigger.addEventListener("click", () => {
-            const expanded = trigger.getAttribute("aria-expanded") === "true";
-            accordionTriggers.forEach((other) => {
-              if (other !== trigger) {
-                other.setAttribute("aria-expanded", "false");
-                const otherPanel = document.getElementById(other.getAttribute("aria-controls"));
-                otherPanel?.classList.add("hidden");
-                const otherIcon = other.querySelector(".accordion-icon");
-                otherIcon?.classList.add("-rotate-90");
-                otherIcon?.classList.remove("rotate-0");
-              }
-            });
-
-            trigger.setAttribute("aria-expanded", (!expanded).toString());
-            panel?.classList.toggle("hidden", expanded);
-            icon?.classList.toggle("-rotate-90", expanded);
-            icon?.classList.toggle("rotate-0", !expanded);
-          });
-        });
-
-        if (navToggle && mobileNav) {
-          navToggle.addEventListener("click", () => {
-            const isHidden = mobileNav.classList.toggle("hidden");
-            if (isHidden) {
-              resetAccordions();
-            }
-          });
-        }
-
-        if (mobileNav) {
-          document.querySelectorAll(".accordion-panel a").forEach((link) => {
-            link.addEventListener("click", () => {
-              mobileNav.classList.add("hidden");
-              resetAccordions();
-            });
-          });
-        }
-
-        const animatedSections = document.querySelectorAll(".animate-section");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-        animatedSections.forEach((section) => observer.observe(section));
-        registerCleanup(() => observer.disconnect());
-
-        const flowSlider = document.getElementById("flow-slider");
-        if (flowSlider) {
-          const stepTrack = flowSlider.querySelector("[data-step-track]");
-          const stepSlides = Array.from(stepTrack.children);
-          const prevStep = flowSlider.querySelector("[data-step-prev]");
-          const nextStep = flowSlider.querySelector("[data-step-next]");
-          const stepDots = flowSlider.querySelector("[data-step-dots]");
-          let stepIndex = 0;
-          const createStepDots = () => {
-            stepSlides.forEach((_, idx) => {
-              const dot = document.createElement("button");
-              dot.className =
-                "h-2.5 w-2.5 rounded-full border border-slate-300 transition-all duration-300";
-              dot.setAttribute("aria-label", `学習ステップ ${idx + 1}`);
-              dot.addEventListener("click", () => goToStep(idx));
-              stepDots.appendChild(dot);
-            });
-          };
-          const updateStepDots = () => {
-            stepDots.querySelectorAll("button").forEach((dot, idx) => {
-              dot.classList.toggle("bg-brand", idx === stepIndex);
-              dot.classList.toggle("h-3.5", idx === stepIndex);
-              dot.classList.toggle("w-3.5", idx === stepIndex);
-            });
-          };
-          const goToStep = (index) => {
-            stepIndex = (index + stepSlides.length) % stepSlides.length;
-            const offset = -stepIndex * 100;
-            stepTrack.style.transform = `translateX(${offset}%)`;
-            updateStepDots();
-          };
-          const nextStepSlide = () => goToStep(stepIndex + 1);
-          const prevStepSlide = () => goToStep(stepIndex - 1);
-          createStepDots();
-          goToStep(0);
-          nextStep.addEventListener("click", nextStepSlide);
-          prevStep.addEventListener("click", prevStepSlide);
-          registerCleanup(() => {
-            nextStep.removeEventListener("click", nextStepSlide);
-            prevStep.removeEventListener("click", prevStepSlide);
-          });
-        }
-
-        const slider = document.getElementById("testimonial-slider");
-        if (slider) {
-          const track = slider.querySelector("[data-track]");
-          const slides = Array.from(track.children);
-          const prevBtn = slider.querySelector("[data-prev]");
-          const nextBtn = slider.querySelector("[data-next]");
-          const dotsContainer = slider.querySelector("[data-dots]");
-          let currentIndex = 0;
-          let autoPlayTimer = null;
-
-          const updateDots = () => {
-            dotsContainer.querySelectorAll("button").forEach((dot, idx) => {
-              dot.classList.toggle("bg-brand", idx === currentIndex);
-              dot.classList.toggle("h-3.5", idx === currentIndex);
-              dot.classList.toggle("w-3.5", idx === currentIndex);
-            });
-          };
-
-          const goToSlide = (index) => {
-            currentIndex = (index + slides.length) % slides.length;
-            const offset = -currentIndex * 100;
-            track.style.transform = `translateX(${offset}%)`;
-            updateDots();
-          };
-
-          const stopAutoPlay = () => {
-            if (autoPlayTimer) {
-              clearInterval(autoPlayTimer);
-              autoPlayTimer = null;
-            }
-          };
-
-          const startAutoPlay = () => {
-            stopAutoPlay();
-            autoPlayTimer = window.setInterval(() => {
-              goToSlide(currentIndex + 1);
-            }, 7000);
-          };
-
-          const restartAutoPlay = () => {
-            startAutoPlay();
-          };
-
-          const handleNext = () => {
-            goToSlide(currentIndex + 1);
-            restartAutoPlay();
-          };
-
-          const handlePrev = () => {
-            goToSlide(currentIndex - 1);
-            restartAutoPlay();
-          };
-
-          const handleDotClick = (index) => {
-            goToSlide(index);
-            restartAutoPlay();
-          };
-
-          const createDots = () => {
-            slides.forEach((_, idx) => {
-              const dot = document.createElement("button");
-              dot.className =
-                "h-2.5 w-2.5 rounded-full border border-slate-300 transition-all duration-300";
-              dot.setAttribute("aria-label", `スライド ${idx + 1}`);
-              dot.addEventListener("click", () => handleDotClick(idx));
-              dotsContainer.appendChild(dot);
-            });
-          };
-
-          createDots();
-          goToSlide(0);
-          startAutoPlay();
-          registerCleanup(() => stopAutoPlay());
-
-          const handleVisibilityChange = () => {
-            if (document.visibilityState === "hidden") {
-              stopAutoPlay();
-            } else if (!autoPlayTimer) {
-              startAutoPlay();
-            }
-          };
-          document.addEventListener("visibilitychange", handleVisibilityChange);
-          registerCleanup(() => {
-            document.removeEventListener("visibilitychange", handleVisibilityChange);
-            stopAutoPlay();
-          });
-
-          nextBtn.addEventListener("click", handleNext);
-          prevBtn.addEventListener("click", handlePrev);
-          registerCleanup(() => {
-            nextBtn.removeEventListener("click", handleNext);
-            prevBtn.removeEventListener("click", handlePrev);
-          });
-        }
-
-        window.addEventListener(
-          "pagehide",
-          () => {
-            cleanupTasks.forEach((callback) => {
-              try {
-                callback();
-              } catch (error) {
-                /* noop */
-              }
-            });
-          },
-          { once: true }
-        );
+          let E = document.getElementById("testimonial-slider");
+          if (E) {
+            let h = E.querySelector("[data-track]"),
+              L = Array.from(h.children),
+              v = E.querySelector("[data-prev]"),
+              b = E.querySelector("[data-next]"),
+              y = E.querySelector("[data-dots]"),
+              $ = 0,
+              f = null,
+              m = () => {
+                y.querySelectorAll("button").forEach((e, t) => {
+                  e.classList.toggle("bg-brand", t === $),
+                    e.classList.toggle("h-3.5", t === $),
+                    e.classList.toggle("w-3.5", t === $);
+                });
+              },
+              p = (e) => {
+                $ = (e + L.length) % L.length;
+                let t = -(100 * $);
+                (h.style.transform = `translateX(${t}%)`), m();
+              },
+              S = () => {
+                f && (clearInterval(f), (f = null));
+              },
+              q = () => {
+                S(),
+                  (f = window.setInterval(() => {
+                    p($ + 1);
+                  }, 7e3));
+              },
+              k = () => {
+                q();
+              },
+              A = () => {
+                p($ + 1), k();
+              },
+              _ = () => {
+                p($ - 1), k();
+              },
+              I = (e) => {
+                p(e), k();
+              },
+              B = () => {
+                L.forEach((e, t) => {
+                  let l = document.createElement("button");
+                  (l.className =
+                    "h-2.5 w-2.5 rounded-full border border-slate-300 transition-all duration-300"),
+                    l.setAttribute("aria-label", `スライド ${t + 1}`),
+                    l.addEventListener("click", () => I(t)),
+                    y.appendChild(l);
+                });
+              };
+            B(), p(0), q(), t(() => S());
+            let w = () => {
+              "hidden" === document.visibilityState ? S() : f || q();
+            };
+            document.addEventListener("visibilitychange", w),
+              t(() => {
+                document.removeEventListener("visibilitychange", w), S();
+              }),
+              b.addEventListener("click", A),
+              v.addEventListener("click", _),
+              t(() => {
+                b.removeEventListener("click", A), v.removeEventListener("click", _);
+              });
+          }
+        }),
+          window.addEventListener(
+            "pagehide",
+            () => {
+              e.forEach((e) => {
+                try {
+                  e();
+                } catch (t) {}
+              });
+            },
+            { once: !0 }
+          );
       });
     </script>
   </body>
