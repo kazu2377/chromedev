@@ -1,4 +1,4 @@
-# Repository Guidelines
+q# Repository Guidelines
 
 ## Project Structure & Module Organization
 - `index.html` は本番公開用の LP。レビュー後の変更は必ずここへ反映します。
