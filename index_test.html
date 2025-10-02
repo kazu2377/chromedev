@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>株式会社 G＆T リクルートサイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-slate-900">
+    <header
+      class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-white/90 border-b border-slate-200"
+    >
+      <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+        <a href="#top" class="text-xl md:text-2xl font-semibold tracking-wide">株式会社 G＆T</a>
+        <nav class="hidden md:flex space-x-6 text-sm">
+          <a href="#vision" class="hover:text-blue-500 transition">ビジョン</a>
+          <a href="#works" class="hover:text-blue-500 transition">研修生の作品</a>
+          <a href="#voices" class="hover:text-blue-500 transition">研修生の声</a>
+          <a href="#program" class="hover:text-blue-500 transition">研修プログラム</a>
+          <a href="#entry" class="hover:text-blue-500 transition">エントリー</a>
+        </nav>
+        <a
+          href="#entry"
+          class="hidden md:inline-flex items-center gap-2 bg-blue-400/90 hover:bg-blue-300 text-slate-900 font-semibold px-4 py-2 rounded-full transition"
+        >
+          エントリーする
+          <span aria-hidden="true">→</span>
+        </a>
+        <button
+          id="menuToggle"
+          class="md:hidden w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-2xl text-blue-600"
+        >
+          &#9776;
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <nav class="flex flex-col px-4 py-4 space-y-3 text-sm">
+          <a href="#vision" class="hover:text-blue-500 transition">ビジョン</a>
+          <a href="#works" class="hover:text-blue-500 transition">研修生の作品</a>
+          <a href="#voices" class="hover:text-blue-500 transition">研修生の声</a>
+          <a href="#program" class="hover:text-blue-500 transition">研修プログラム</a>
+          <a href="#entry" class="hover:text-blue-500 transition">エントリー</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="pt-24">
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute -top-24 -left-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"
+          ></div>
+          <div class="absolute top-1/2 right-0 w-80 h-80 bg-blue-500/10 blur-3xl rounded-full"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 py-20 grid gap-12 lg:grid-cols-2 items-center">
+          <div class="fade-in">
+            <span
+              class="inline-flex items-center gap-2 bg-blue-400/20 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold tracking-wide"
+            >
+              未経験歓迎 / AI×マーケティングで加速
+            </span>
+            <h1 class="text-3xl md:text-5xl font-bold mt-6 leading-tight">
+              AI を味方に。<br class="hidden md:block" />
+              若手が主役のプロダクションで、成長を現実に。
+            </h1>
+            <p class="mt-6 text-slate-600 leading-relaxed">
+              株式会社 G＆T は、AI
+              と動画マーケティングを融合した次世代の制作チームです。各分野の専門家が伴走し、未経験からでも「創れる」「届けられる」人材へ。研修と実践を通じて、本物のスキルを手に入れませんか。
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a
+                href="#entry"
+                class="inline-flex items-center justify-center gap-2 bg-blue-400 text-slate-950 font-semibold px-6 py-3 rounded-full transition hover:bg-blue-300"
+              >
+                無料カウンセリングを予約
+                <span aria-hidden="true">→</span>
+              </a>
+              <a
+                href="#program"
+                class="inline-flex items-center justify-center gap-2 border border-blue-400 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-400/10 transition"
+              >
+                研修の流れを見る
+              </a>
+            </div>
+            <div class="mt-10 grid grid-cols-3 gap-6 text-center">
+              <div>
+                <p class="text-3xl font-bold text-blue-500">93%</p>
+                <p class="text-xs text-slate-500">6 ヶ月以内の定着率</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-blue-500">120+</p>
+                <p class="text-xs text-slate-500">動画/広告の納品実績</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-blue-500">24/7</p>
+                <p class="text-xs text-slate-500">AI ナレッジにアクセス</p>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in relative">
+            <div
+              class="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-slate-200"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                alt="クリエイティブに取り組む若手チーム"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-slate-900/20"></div>
+            </div>
+            <div
+              class="absolute -bottom-8 -left-8 bg-white/95 border border-slate-200 rounded-2xl p-6 backdrop-blur w-64"
+            >
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Training Dashboard</p>
+              <p class="mt-2 text-sm text-slate-600">
+                AI を活用したトレーニング管理で、一人ひとりの成長を可視化。
+              </p>
+              <div class="mt-4 flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center text-blue-600 font-semibold"
+                >
+                  AI
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">AUTO FEEDBACK</p>
+                  <p class="text-xs text-slate-500">週次レポートで即改善</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vision" class="py-24 bg-blue-50">
+        <div class="max-w-6xl mx-auto px-4 grid gap-12 md:grid-cols-2 items-center">
+          <div class="fade-in">
+            <p class="text-sm uppercase tracking-[0.3em] text-blue-500">Our Vision</p>
+            <h2 class="mt-4 text-3xl font-bold">未経験でも、AI と共に飛躍できるフィールド</h2>
+            <p class="mt-6 text-slate-600 leading-relaxed">
+              G＆T では、AI
+              を単なるツールではなくパートナーとして扱います。動画制作、広告運用、マーケティング分析まで、AI
+              が持つ高速なインサイトと、あなたの感性を掛け合わせることで、新しい価値を生み出すプロジェクトが日々進行中です。
+            </p>
+            <div class="mt-10 grid gap-6 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-white p-6 fade-in">
+                <p class="text-lg font-semibold text-blue-600">AI ブートキャンプ</p>
+                <p class="mt-3 text-sm text-slate-500">
+                  ChatGPT・動画生成・自動編集など、AI 活用の基礎を 4 週間で習得。
+                </p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-6 fade-in">
+                <p class="text-lg font-semibold text-blue-600">リアル案件配属</p>
+                <p class="mt-3 text-sm text-slate-500">
+                  研修後は実際のクライアント案件に参加し、成果物をポートフォリオ化。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in relative">
+            <div class="aspect-[4/5] rounded-3xl overflow-hidden border border-slate-200">
+              <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                <source
+                  src="20251001_1426_New Video_simple_compose_01k6f3qwfwfk4sqems5qyj4v0z.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="works" class="py-24">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 fade-in">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-blue-500">Trainee Works</p>
+              <h2 class="mt-4 text-3xl font-bold">研修生の作品</h2>
+            </div>
+            <div class="text-sm text-slate-500 max-w-xl">
+              現場で活躍する研修生の最新プロジェクトをピックアップ。AI
+              とチームのコラボで生まれた成果をスライドでご紹介します。
+            </div>
+          </div>
+
+          <div class="relative mt-12">
+            <div class="overflow-hidden rounded-3xl border border-slate-200">
+              <div id="slider" class="flex transition-transform duration-700 ease-out">
+                <article class="min-w-full grid md:grid-cols-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80"
+                    alt="SNS 広告制作"
+                    class="h-80 md:h-full w-full object-cover"
+                  />
+                  <div class="p-8 bg-white/90">
+                    <p class="text-sm text-blue-600">SNS 広告×AI 動画生成</p>
+                    <h3 class="mt-4 text-2xl font-semibold">UGC を活用した化粧品キャンペーン</h3>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                      研修 3 ヶ月目で参画。AI 生成素材と撮影素材を組み合わせ、CTR を 162%
+                      改善。ChatGPT によるコピー検証も実施。
+                    </p>
+                    <ul class="mt-6 text-xs text-slate-500 space-y-2">
+                      <li>・動画編集：CapCut + Runway</li>
+                      <li>・分析：Looker Studio + GPT</li>
+                      <li>・成果：CVR 145% / CPA 58% 改善</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="min-w-full grid md:grid-cols-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=1200&q=80"
+                    alt="YouTube コンテンツ"
+                    class="h-80 md:h-full w-full object-cover"
+                  />
+                  <div class="p-8 bg-white/90">
+                    <p class="text-sm text-blue-600">YouTube × マーケティング</p>
+                    <h3 class="mt-4 text-2xl font-semibold">BtoB SaaS のプロダクト解説シリーズ</h3>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                      未経験入社のメンバーが企画から分析まで担当。AI
+                      によるサムネ生成と視聴維持率の最適化で問い合わせ数が 1.8 倍に。
+                    </p>
+                    <ul class="mt-6 text-xs text-slate-500 space-y-2">
+                      <li>・AI アイデア発散：ChatGPT + Ideogram</li>
+                      <li>・配信分析：Data Studio</li>
+                      <li>・成果：平均視聴維持率 65% 達成</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="min-w-full grid md:grid-cols-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                    alt="Web LP 改善"
+                    class="h-80 md:h-full w-full object-cover"
+                  />
+                  <div class="p-8 bg-white/90">
+                    <p class="text-sm text-blue-600">Landing Page 改善</p>
+                    <h3 class="mt-4 text-2xl font-semibold">AI A/B テストで商談率アップ</h3>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                      AI によるコピー生成とヒートマップ解析でファーストビューを刷新。商談獲得率を
+                      1.5 倍に押し上げました。
+                    </p>
+                    <ul class="mt-6 text-xs text-slate-500 space-y-2">
+                      <li>・分析：Hotjar + GA4 + GPT</li>
+                      <li>・制作：Figma + Webflow</li>
+                      <li>・成果：コンバージョン 150% 増</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="flex justify-center gap-2 mt-6">
+              <button
+                class="slider-dot w-3 h-3 rounded-full bg-blue-500"
+                data-index="0"
+                aria-label="作品 1"
+              ></button>
+              <button
+                class="slider-dot w-3 h-3 rounded-full bg-slate-300"
+                data-index="1"
+                aria-label="作品 2"
+              ></button>
+              <button
+                class="slider-dot w-3 h-3 rounded-full bg-slate-300"
+                data-index="2"
+                aria-label="作品 3"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="voices" class="py-24 bg-blue-50">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="fade-in text-center max-w-3xl mx-auto">
+            <p class="text-sm uppercase tracking-[0.3em] text-blue-500">Trainee Voices</p>
+            <h2 class="mt-4 text-3xl font-bold">研修生の声</h2>
+            <p class="mt-6 text-slate-600">
+              AI
+              活用のはじめ方から、現場での挑戦まで。未経験で入社したメンバーのリアルな声をご紹介します。
+            </p>
+          </div>
+          <div class="mt-12 grid gap-8 md:grid-cols-3">
+            <article
+              class="fade-in rounded-3xl border border-slate-200 bg-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <p class="text-sm text-blue-600">動画クリエイター / 23 歳</p>
+                <h3 class="mt-3 text-lg font-semibold">AI で制作スピードが 3 倍に</h3>
+                <p class="mt-4 text-sm text-slate-600">
+                  「AI
+                  が自分の代わりにラフ動画を生成してくれるので、私は仕上げや演出に集中できます。毎週のメンタリングでクリエイティブの幅も広がりました。」
+                </p>
+              </div>
+              <div class="mt-6 text-xs text-slate-500">
+                Adobe × Runway を活用 / 現在は案件リーダー
+              </div>
+            </article>
+            <article
+              class="fade-in rounded-3xl border border-slate-200 bg-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <p class="text-sm text-blue-600">マーケター / 26 歳</p>
+                <h3 class="mt-3 text-lg font-semibold">数値改善を武器に異業種から転職</h3>
+                <p class="mt-4 text-sm text-slate-600">
+                  「未経験で入社しましたが、マーケティング AI
+                  ツールの使い方を徹底的に学べたことで、半年で広告運用のスペシャリストに。外部セミナー登壇の機会も得ました。」
+                </p>
+              </div>
+              <div class="mt-6 text-xs text-slate-500">CPA 改善プロジェクトに参画 / 受賞歴あり</div>
+            </article>
+            <article
+              class="fade-in rounded-3xl border border-slate-200 bg-white p-6 flex flex-col justify-between"
+            >
+              <div>
+                <p class="text-sm text-blue-600">ディレクター / 24 歳</p>
+                <h3 class="mt-3 text-lg font-semibold">AI プロジェクトの統括を担当</h3>
+                <p class="mt-4 text-sm text-slate-600">
+                  「チームの AI 活用状況をダッシュボードで見える化。個々の学習プランを AI
+                  が提案してくれるので、メンバー全員が短期間で成長できる仕組みが整っています。」
+                </p>
+              </div>
+              <div class="mt-6 text-xs text-slate-500">
+                プロジェクトマネジメントも経験 / 認定資格取得
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="program" class="py-24">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="fade-in text-center max-w-3xl mx-auto">
+            <p class="text-sm uppercase tracking-[0.3em] text-blue-500">Program Flow</p>
+            <h2 class="mt-4 text-3xl font-bold">研修プログラムとサポート</h2>
+            <p class="mt-6 text-slate-600">
+              AI 研修・メンタリング・実務配属まで、一気通貫で成長を支えます。
+            </p>
+          </div>
+          <div class="mt-12 grid gap-6 lg:grid-cols-4">
+            <div class="fade-in border border-slate-200 bg-blue-50 rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-[0.3em] text-blue-500">WEEK 1-4</p>
+              <h3 class="mt-4 text-lg font-semibold">AI ブートキャンプ</h3>
+              <p class="mt-4 text-sm text-slate-500">
+                AI
+                ツールの基礎・プロンプト設計・動画生成のワークショップで、実践的なスキルを習得します。
+              </p>
+            </div>
+            <div class="fade-in border border-slate-200 bg-blue-50 rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-[0.3em] text-blue-500">WEEK 5-8</p>
+              <h3 class="mt-4 text-lg font-semibold">リアル案件で実践</h3>
+              <p class="mt-4 text-sm text-slate-500">
+                社内外の案件に先輩と入り、納品までの PDCA を体験。レビューで改善点を即時共有。
+              </p>
+            </div>
+            <div class="fade-in border border-slate-200 bg-blue-50 rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-[0.3em] text-blue-500">WEEK 9-12</p>
+              <h3 class="mt-4 text-lg font-semibold">AI マーケティング研修</h3>
+              <p class="mt-4 text-sm text-slate-500">
+                広告運用、データ分析、KPI 設計までを AI
+                と連携しながら学習。自走できるマインドを養います。
+              </p>
+            </div>
+            <div class="fade-in border border-slate-200 bg-blue-50 rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-[0.3em] text-blue-500">After</p>
+              <h3 class="mt-4 text-lg font-semibold">キャリアサポート</h3>
+              <p class="mt-4 text-sm text-slate-500">
+                キャリア面談、社内副業、資格支援を提供。AI
+                トレンド講座で継続的なスキルアップを後押しします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 bg-gradient-to-br from-blue-100 via-white to-blue-50">
+        <div class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+          <div class="fade-in">
+            <p class="text-sm uppercase tracking-[0.3em] text-blue-600">Why G＆T</p>
+            <h2 class="mt-4 text-3xl font-bold">AI を駆使した学習 × 実践で、圧倒的なスピード感</h2>
+            <ul class="mt-6 space-y-4 text-sm text-slate-600">
+              <li class="flex gap-3">
+                <span class="mt-1 text-blue-500">◆</span>
+                24 時間アクセス可能な AI ナレッジベース。わからないことはすぐに質問・検索。
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 text-blue-500">◆</span>
+                毎週の AI アセスメントで成長度を可視化。弱点に合わせた課題を AI が提示。
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 text-blue-500">◆</span>
+                マーケティングチームとの連携で、成果に直結するクリエイティブを生み出せる環境。
+              </li>
+            </ul>
+          </div>
+          <div class="fade-in rounded-3xl border border-blue-400/40 bg-white p-8">
+            <p class="text-sm text-blue-600">AI ラーニングサンプル</p>
+            <h3 class="mt-3 text-xl font-semibold">1 週間スキル強化メニュー</h3>
+            <ul class="mt-6 space-y-3 text-sm text-slate-600">
+              <li>Day 1: プロンプト設計ワークショップ</li>
+              <li>Day 2: AI 動画生成ハンズオン</li>
+              <li>Day 3: マーケティング分析ハンズオン</li>
+              <li>Day 4: 現場案件レビュー &amp; 改善提案</li>
+              <li>Day 5: 成果共有プレゼンテーション</li>
+            </ul>
+            <p class="mt-6 text-xs text-slate-500">※ スキルレベルに応じて AI がアレンジします。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="entry" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 text-center fade-in">
+          <p class="text-sm uppercase tracking-[0.3em] text-blue-500">Join Us</p>
+          <h2 class="mt-4 text-3xl font-bold">まずはカジュアル面談から</h2>
+          <p class="mt-6 text-slate-600">
+            キャリアの方向性やスキルセットに合わせて、最適なステップをご提案します。AI
+            に強いチームに飛び込むチャンスを掴みましょう。
+          </p>
+          <form class="mt-12 grid gap-4 sm:grid-cols-2 text-left">
+            <label class="flex flex-col gap-2 text-sm">
+              お名前
+              <input
+                type="text"
+                name="name"
+                placeholder="例）山田 太郎"
+                class="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label class="flex flex-col gap-2 text-sm">
+              メールアドレス
+              <input
+                type="email"
+                name="email"
+                placeholder="sample@example.com"
+                class="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label class="flex flex-col gap-2 text-sm sm:col-span-2">
+              志望動機・聞きたいこと
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="現時点でのご希望や質問をご入力ください"
+                class="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-blue-400 focus:outline-none"
+              ></textarea>
+            </label>
+            <button
+              type="submit"
+              class="sm:col-span-2 inline-flex justify-center items-center gap-2 bg-blue-400 text-slate-950 font-semibold px-6 py-3 rounded-full hover:bg-blue-300 transition"
+            >
+              面談を申し込む
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-slate-100">
+      <div
+        class="max-w-6xl mx-auto px-4 py-12 text-sm text-slate-500 flex flex-col md:flex-row gap-6 md:items-center md:justify-between"
+      >
+        <div>
+          <p class="font-semibold text-slate-600">株式会社 G＆T</p>
+          <p class="mt-2">〒150-0000 東京都渋谷区○○ 1-2-3 Creative Hub 8F</p>
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-blue-500 transition">プライバシーポリシー</a>
+          <a href="#" class="hover:text-blue-500 transition">採用情報</a>
+          <a href="#" class="hover:text-blue-500 transition">お問い合わせ</a>
+        </div>
+        <p class="text-xs">© 2025 G＆T Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const sections = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      const slider = document.getElementById("slider");
+      const dots = Array.from(document.querySelectorAll(".slider-dot"));
+      let currentIndex = 0;
+      let intervalId;
+
+      const updateSlider = (index) => {
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("bg-blue-500", i === index);
+          dot.classList.toggle("bg-slate-300", i !== index);
+        });
+        currentIndex = index;
+      };
+
+      const startAutoSlide = () => {
+        intervalId = setInterval(() => {
+          const nextIndex = (currentIndex + 1) % dots.length;
+          updateSlider(nextIndex);
+        }, 6000);
+      };
+
+      const stopAutoSlide = () => clearInterval(intervalId);
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          stopAutoSlide();
+          updateSlider(Number(dot.dataset.index));
+          startAutoSlide();
+        });
+      });
+
+      startAutoSlide();
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuToggle?.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
